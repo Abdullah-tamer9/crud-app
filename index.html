@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Product Management System</title>
+</head>
+
+<body>
+    <div class="container">
+        <header class="app-header">
+            <h1><i class="fas fa-box"></i> Product Management</h1>
+            <p class="subtitle">Manage your products efficiently</p>
+        </header>
+
+        <main>
+            <section class="input-section">
+                <form id="productForm" class="product-form">
+                    <div class="form-group">
+                        <label for="title">Product Title</label>
+                        <input id="title" type="text" placeholder="Enter product title" required>
+                    </div>
+
+                    <div class="price-inputs">
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input id="price" type="number" placeholder="0.00" onkeyup="getTotal()" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="taxes">Taxes</label>
+                            <input id="taxes" type="number" placeholder="0.00" onkeyup="getTotal()">
+                        </div>
+                        <div class="form-group">
+                            <label for="ads">Additional Costs</label>
+                            <input id="ads" type="number" placeholder="0.00" onkeyup="getTotal()">
+                        </div>
+                        <div class="form-group">
+                            <label for="descount">Discount</label>
+                            <input id="descount" type="number" placeholder="0.00" onkeyup="getTotal()">
+                        </div>
+                        <div class="form-group total-group">
+                            <label>Total</label>
+                            <div id="total" class="total-display">0.00</div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="count">Quantity</label>
+                            <input id="count" type="number" placeholder="1" min="1" max="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <input id="category" type="text" placeholder="Enter category">
+                        </div>
+                    </div>
+
+                    <button type="button" id="create" class="btn-primary">
+                        <i class="fas fa-plus"></i> Create Product
+                    </button>
+                </form>
+            </section>
+
+            <section class="search-section">
+                <div class="search-container">
+                    <input type="text" id="search" placeholder="Search products..." onkeyup="searchmethod(this.value)">
+                    <div class="search-buttons">
+                        <button onclick="getmood(this.id)" id="seartitle" class="btn-secondary">
+                            <i class="fas fa-font"></i> Search by Title
+                        </button>
+                        <button onclick="getmood(this.id)" id="searcategory" class="btn-secondary">
+                            <i class="fas fa-tags"></i> Search by Category
+                        </button>
+                    </div>
+                </div>
+                <div id="deleteAll" class="delete-all-container"></div>
+            </section>
+
+            <section class="table-section">
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Price</th>
+                                <th>Taxes</th>
+                                <th>Additional</th>
+                                <th>Discount</th>
+                                <th>Total</th>
+                                <th>Category</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
